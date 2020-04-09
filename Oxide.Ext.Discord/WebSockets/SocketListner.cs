@@ -79,6 +79,8 @@ namespace Oxide.Ext.Discord.WebSockets
 
         public void SocketMessage(object sender, MessageEventArgs e)
         {
+            if (e.Data == null) return;
+            
             RPayload payload = JsonConvert.DeserializeObject<RPayload>(e.Data);
 
             if (payload.Sequence.HasValue)
